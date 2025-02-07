@@ -9,7 +9,9 @@ public class IrregularPolygon {
     private ArrayList<Point2D.Double> myPolygon = new ArrayList<Point2D.Double>();
 
     // constructor
-    public IrregularPolygon() {}
+    public IrregularPolygon() {
+        this.myPolygon = myPolygon;
+    }
 
     // public methods
     public void add(Point2D.Double aPoint)
