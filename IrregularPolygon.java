@@ -9,9 +9,7 @@ public class IrregularPolygon {
     private ArrayList<Point2D.Double> myPolygon = new ArrayList<Point2D.Double>();
 
     // constructor
-    public IrregularPolygon(ArrayList myPolygon) {
-        this.myPolygon = myPolygon;
-    }
+    public IrregularPolygon() {}
 
     // public methods
     public void add(Point2D.Double aPoint)
@@ -21,15 +19,22 @@ public class IrregularPolygon {
     }
 
     public double perimeter() {
-        int sum = 0;
-        for (Point2D.Double myPoint: myPolygon) {
-            sum += myPolygon.distance(myPoint);
+        double sum = 0;
+        for (int i = 0; i < myPolygon.size() - 1; i++) {
+            Point2D.Double point = myPolygon.get(i);
+            Point2D.Double secondPoint = myPolygon.get(i + 1);
+            sum += point.distance(secondPoint);
         }
-        return 3.14;
+        sum += myPolygon.get(myPolygon.size() - 1).distance(myPolygon.get(0));
+        return sum;
     }
 
     public double area() {
         // TODO: Calculate the area.
+        double first = 0;
+        double second = 0;
+        for (int i = 0; i < myPolygon.size() - 1; i++) {
+        }
         return 0.0;
     }
 
