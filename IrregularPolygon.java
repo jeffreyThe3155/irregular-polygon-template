@@ -20,12 +20,16 @@ public class IrregularPolygon {
 
     public double perimeter() {
         double sum = 0;
-        for (int i = 0; i < myPolygon.size() - 1; i++) {
+        for (int i = 0; i < myPolygon.size(); i++) {
             Point2D.Double point = myPolygon.get(i);
+            if (i == myPolygon.size() - 1) {
+                sum += myPolygon.get(i).distance(myPolygon.get(0));
+                break;
+            }
             Point2D.Double secondPoint = myPolygon.get(i + 1);
             sum += point.distance(secondPoint);
         }
-        sum += myPolygon.get(myPolygon.size() - 1).distance(myPolygon.get(0));
+        //sum += myPolygon.get(myPolygon.size() - 1).distance(myPolygon.get(0));
         return sum;
     }
 
@@ -33,12 +37,19 @@ public class IrregularPolygon {
         // TODO: Calculate the area.
         double first = 0;
         double second = 0;
-        for (int i = 0; i < myPolygon.size() - 1; i++) {
+        for (int i = 0; i < myPolygon.size(); i++) {
+            if (i == myPolygon.size() - 1) {
+                //i = myPolygon.size() - 1
+                first += myPolygon.get(i).x * myPolygon.get(0).y;
+                second += myPolygon.get(i).y * myPolygon.get(0).x;
+                break;
+            }
+
             first += myPolygon.get(i).x * myPolygon.get(i + 1).y;
             second += myPolygon.get(i).y * myPolygon.get(i + 1).x;
         }
-        first += myPolygon.get(myPolygon.size() - 1).x * myPolygon.get(0).y;
-        second += myPolygon.get(myPolygon.size() - 1).y * myPolygon.get(0).x;
+        //first += myPolygon.get(myPolygon.size() - 1).x * myPolygon.get(0).y;
+        //second += myPolygon.get(myPolygon.size() - 1).y * myPolygon.get(0).x;
         return Math.abs((first - second) / 2);
     }
 
