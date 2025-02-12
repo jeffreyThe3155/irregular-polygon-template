@@ -34,8 +34,12 @@ public class IrregularPolygon {
         double first = 0;
         double second = 0;
         for (int i = 0; i < myPolygon.size() - 1; i++) {
+            first += myPolygon.get(i).x * myPolygon.get(i + 1).y;
+            second += myPolygon.get(i).y * myPolygon.get(i + 1).x;
         }
-        return 0.0;
+        first += myPolygon.get(myPolygon.size() - 1).x * myPolygon.get(0).y;
+        second += myPolygon.get(myPolygon.size() - 1).y * myPolygon.get(0).x;
+        return Math.abs((first - second) / 2);
     }
 
     public void draw()
